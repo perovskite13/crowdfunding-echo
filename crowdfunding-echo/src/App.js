@@ -12,7 +12,7 @@ function App(){
         <Nav />
         <Switch>
           
-          <Route path="/project">
+          <Route path="/echo/:id">
             <ProjectPage />
           </Route>
 

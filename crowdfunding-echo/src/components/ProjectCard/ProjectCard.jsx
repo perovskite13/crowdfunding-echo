@@ -9,7 +9,7 @@ function ProjectCard(props){
     //template
     return(
         <div className="project-card">
-            <Link to="/project">
+            <Link to={`/echo/${projectData.id}`}>
                 <img src={projectData.image}/>
                 <h3>{projectData.title}</h3>
             </Link>
