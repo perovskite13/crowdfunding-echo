@@ -1,0 +1,225 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css);
+
+hr {
+
+  border: 0;
+  height: 1px;
+  opacity: .6;
+  background-image: linear-gradient(
+    to right, 
+    rgba(255,255,255,.2), 
+    rgba(255,255,255,1), 
+    rgba(255,255,255,.2)
+  );
+}
+
+.login,.sign-up {
+  opacity: 1;
+  visibility: visible;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  margin-top: -230px;
+  margin-left: -210px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: rgba(255,255,255,.3);
+  height: 440px;
+  width: 400px;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  -webkit-box-shadow: 10px 10px 15px -6px rgba(0,0,0,0.25);
+  transition: 
+    opacity .3s ease-in .3s,
+    visibility .3s ease-in .3s;
+  transform: scale(.9);
+}
+
+.sign-up{
+    height: 540px;
+}
+
+.create{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+    position: absolute;
+
+    z-index: 1000;
+    top: 6%;
+    left: 4%;
+    margin: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 90%;
+    width: 90%;
+
+    opacity: 1;
+    visibility: visible;
+
+    color: white;
+    background-color: rgba(255,255,255,.3);
+    text-align: center;
+    border-radius: 2px;
+    -webkit-box-shadow: 10px 10px 15px 15px rgba(0,0,0,0.25);
+    transition: 
+        opacity .3s ease-in .3s,
+        visibility .3s ease-in .3s;
+    transform: scale(.9);
+}  
+
+
+
+#inline{
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    text-align: left;
+    flex-direction: row;
+}
+
+#wide{
+    width: 100%;
+
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    flex-direction: column;
+}
+
+.field {
+    
+  margin: 20px;
+  margin-left: 50px;
+  text-align: left;
+  align-content: left;
+}
+
+.field-wide {
+    width: 94%;
+    margin: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    margin-left: 50px;
+    align-content: left;
+
+}
+
+.input-wide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    margin: 5px;
+    width: 100%;
+    margin-left: -5px;
+    height: 40px;
+    border-radius: 2px;
+    border: none;
+    font-size: 18px;
+    padding: 5px;
+    color: #25291b;
+    background-color: rgba(255,255,255, .5);
+    /* -webkit-box-shadow: 10px 10px 10px -10px rgba(0,0,0,0.3); */
+    transition: background-color .4s ease-out;
+}
+
+.input {
+  margin: 5px;
+  width: 300px;
+  margin-left: -5px;
+  height: 40px;
+  border-radius: 2px;
+  border: none;
+  font-size: 18px;
+  padding: 5px;
+  color: #25291b;
+  background-color: rgba(255,255,255, .5);
+  -webkit-box-shadow: 10px 10px 10px -10px rgba(0,0,0,0.3);
+  transition: background-color .4s ease-out;
+}
+
+.input:focus,.input-wide:focus {
+  outline: none;
+  background-color: rgba(255,255,255, .8)
+}
+
+.submit-button {
+  cursor: pointer;
+  margin-top: 20px;
+  width: 310px;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+  background-color: rgba(0,0,0,.6);
+  border-radius: 2px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 3px;
+
+  transition: background-color .4s ease-out;
+}
+
+.submit-button:hover {
+  background-color: rgba(0,0,0,.7);
+}
+
+.submit-button:focus {
+  outline: none;
+  background-color: rgba(0,0,0,.7);
+}
+
+.in-out {
+  font-size: 15px;
+  margin-top: 30px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.in-out a {
+  color: rgba(0,0,0, .7);
+  text-decoration: none;
+  margin-left: 17px;
+  border: 1px solid rgba(0,0,0, .7);
+  border-radius: 2px;
+  padding: 2px;
+  transition: all .4s ease-out;
+}
+
+.in-out a:hover {
+  color: rgba(255,255,255, 1);
+  border: 1px solid rgba(255,255,255, 1);
+}
+
+.field-in {
+  animation: pulse .7s 1;
+}
+
+.animate-check {
+  margin-left: 5px;
+  animation: pulse2 .4s 1;
+}
+
+@keyframes pulse {
+  0% { transform: scale(.8); }
+  40% { transform: scale(1.2); }
+  70% { transform: scale(1); }
+  90% { transform: scale(1.01); }
+  100%{ transform: scale(1); }
+}
+
+@keyframes pulse2 {
+  0% { transform: scale(.1); opacity: 0;}
+  50% { transform: scale(1.4); opacity: 1;}
+  100% { transform: scale(1); }
+}

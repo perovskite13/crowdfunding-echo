@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-//import { oneProject } from "../data";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 
@@ -29,17 +28,19 @@ function ProjectPage(){
     //return <h1> This is the project page. </h1>;
     return (
     <div>
-        <h2>{projectData.title}</h2>
+    <div className= "project">
+        <div id="project-details">
+        <h1 id = "title">{projectData.title}</h1>
         <h3>Created at: {projectData.date_created}</h3>
-        <h3>GOAL: {projectData.goal}</h3>
-        <h3>{`Status: ${projectData.is_open}`}</h3>
+        <h3>Goal: $ {projectData.goal}</h3>
+        <h3>{`Active: ${projectData.is_open}`}</h3>
         <h3>Pledges:</h3>
-        <h2>{sum}</h2>
+        <h2>Total - $ {sum}</h2>
         <ul>
             {projectData.pledges.map((pledgeData, key) => {
                 return (
                     <li>
-                        {pledgeData.amount} from {pledgeData.supporter}
+                        $ {pledgeData.amount} from {pledgeData.supporter}
                     </li>
                 );              
             })
@@ -51,6 +52,15 @@ function ProjectPage(){
                 <ProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
             ))}
         </div>
+
+        <div>
+            <img src={projectData.image} alt=""/>
+        </div>
+
+        </div>
+    </div>
+    <footer> Copyright Echo 2020</footer>
+
     </div>
     );
 }

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
-import { allProjects } from "../../data";
+import logo from "../../echo.jpg";
+
+//import { allProjects } from "../../data";
 
 
 function HomePage(){
@@ -22,12 +24,20 @@ function HomePage(){
     //template
     //return <h1> This is the home page. </h1>;
     return (
-        <div id='project-list' >
+        <div>
+            <div className = "App-header">
+                <img id="home-pic" src={logo} className="App-logo" alt="logo" />
+            </div>
+            <div id='project-list' >
             {projectList.map((projectData, key) => {
                 //return <div key={key}>{projectData.title}</div>;
                 return <ProjectCard key={key} projectData={projectData} />;
             })}
+            </div>
+            <footer> Copyright Echo 2020</footer>
+
         </div>
+
     );
 }
 
