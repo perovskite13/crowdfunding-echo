@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProgressBar from "../components/ProgressBar/ProgressBar";
 
-
-  
 function ProjectPage(){
     const [projectData, setProjectData] = useState({ pledges: [] });
     const { id } = useParams();

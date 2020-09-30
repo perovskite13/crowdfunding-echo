@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
+import {setStorage} from "../../helpers/localStorage";
 
 
 function PostForm(){
@@ -51,8 +52,9 @@ function PostForm(){
         ) {
           console.log("All data is there")
           postData().then((response) => {
-            console.log(response);
-            window.localStorage.setItem("title", projectDetails.title);
+            //console.log(response);
+            //window.localStorage.setItem("title", projectDetails.title);
+            setStorage("title",projectDetails.title);
             history.push("/echo");
           });
         }

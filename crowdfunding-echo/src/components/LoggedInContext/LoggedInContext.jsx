@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { clearStorage } from "../../helpers/localStorage";
+import { getStorage } from "../../helpers/localStorage";
 
 function LoggedInContext() {
     const history = useHistory();
@@ -11,10 +13,8 @@ function LoggedInContext() {
         setLoggedIn: () => {}
      })
     
-    //const loggedInContext = React.useContext(LoggedInContext);
-
     const isAuthenticated = () => {
-        let token = window.localStorage.getItem("token");
+        let token = getStorage("token");
         if (token != null) {
             return true;
         } else {
@@ -30,11 +30,15 @@ function LoggedInContext() {
     if (loading === true) {
         return <h1>Loading....</h1>;
     };
+
+    const logout = () =>{
+        clearStorage();
+        history.push("/");
+    }
     
     
     if (loggedin) {
         LoggedInContext.setLoggedIn(true);
-        console.log(LoggedInContext);
             //return (props.children);
         return true;
     } else {

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Link, useHistory} from "react-router-dom";
+import {setStorage} from "../../helpers/localStorage";
 
 
 function SignUpForm(props){
@@ -36,7 +37,8 @@ function SignUpForm(props){
         e.preventDefault();
         if(credentials.password == credentials.confirmPassword){
             handleChange().then((response)=> {
-                window.localStorage.setItem("signup", response.username);
+                //window.localStorage.setItem("signup", response.username);
+                setStorage("signup",response.username);
                 history.push("/");
             });
         }else{
