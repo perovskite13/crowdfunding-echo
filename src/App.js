@@ -27,7 +27,7 @@ function App(){
             <ProjectPage />
           </Route>
 
-          <Route path="/echo/">
+          <Route path="/createProject/">
             <CreatePage />
           </Route>
 
@@ -39,7 +39,7 @@ function App(){
             <UserPage />
           </Route>
 
-          <Route path="/users/">
+          <Route path="/signUp/">
             <SignUpPage />
           </Route>
 
