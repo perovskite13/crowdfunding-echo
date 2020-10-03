@@ -1,26 +1,32 @@
-import React, {useState, useEffect, useContext} from "react";
-import {useHistory} from "react-router-dom";
+import React, { useState,useEffect } from "react";
+import {Link, useParams, useHistory} from "react-router-dom";
 import {getStorage, isAuthenticated, setStorage} from "../../helpers/localStorage";
 
-
-function PostForm(){
-    //variables
-    //const Today = React.createContext(CalendarDate.today());
-    // const current = new Date();
-    // const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-    // console.log(date);
-
-    const[projectDetails,setProjectDetails] = useState({
-        title : "",
-        description : "Describe your project ideas",
-        goal : 0,
-        image : "",
-        is_open : true,
-        category : "",
-        date_created: "2020-03-20T14:28:23.382748Z"
+function EditForm(props){
+    const {projectData} = props;
+    console.log(projectData)
+    const [projectDetails,setProjectDetails] = useState({
+        title: "",
+        description: "",
+        goal: "",
+        image: "",
+        is_open: "",
+        owner: "",
     });
-
     const history = useHistory();
+    const { id } = useParams();
+
+    useEffect(() =>{
+        setProjectDetails({
+            title: projectData.title,
+            description: projectData.description,
+            goal: projectData.goal,
+            image: projectData.image,
+            is_open: projectData.is_open,
+            owner: projectData.owner,
+        })
+    }
+    ,[projectData]);
 
     //methods
     //set state
@@ -32,11 +38,10 @@ function PostForm(){
         }));
     };
 
-
     const postData = async() => {
         const token = getStorage("token")
-        const response = await fetch(`${process.env.REACT_APP_API_URL}echo/`,{
-            method: "post",
+        const response = await fetch(`${process.env.REACT_APP_API_URL}echo/${id}`,{
+            method: "put",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Token ${token}`,
@@ -49,29 +54,18 @@ function PostForm(){
     //get token
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (
-            projectDetails.title &&
-            projectDetails.description &&
-            projectDetails.goal &&
-            projectDetails.image &&
-            projectDetails.is_open &&
-            projectDetails.category
-        ) {
           postData(isAuthenticated()).then(res => {
             setStorage("title",projectDetails.title);
             console.log(res)
             history.push( `/echo/${res.id}`)
-          });
-        }
+        });
     }
 
-    
     //template
-    return (
-      
+    return ( 
       <div>
         <form className = "create">
-        <h1>Create A Project</h1>
+        <h1>Edit Project</h1>
         <hr />
           <div id = "inline">
               <div className = "field">
@@ -150,7 +144,7 @@ function PostForm(){
           <hr />
 
           <button className = "submit-button" type="submit" onClick={handleSubmit}>
-            Create
+            Submit
           </button>
           </form>
 
@@ -161,4 +155,4 @@ function PostForm(){
     
 }
 
-export default PostForm;
+export default EditForm;

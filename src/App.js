@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ProjectPage from "./pages/ProjectPage";
 import CreatePage from "./pages/CreatePage";
+import EditPage from "./pages/EditPage";
 import UserPage from "./pages/UserPage";
 import SignUpPage from "./pages/SignUpPage";
 
@@ -31,6 +32,10 @@ function App(){
             <CreatePage />
           </Route>
 
+          <Route path="/editProject/">
+            <EditPage />
+          </Route>
+
           <Route path="/login/">
             <LoginPage />
           </Route>
@@ -39,7 +44,7 @@ function App(){
             <UserPage />
           </Route>
 
-          <Route path="/signUp/">
+          <Route path="/signup/">
             <SignUpPage />
           </Route>
 

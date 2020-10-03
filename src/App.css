@@ -94,6 +94,12 @@ img{
   height: 70%;
 }
 
+.notAllowed{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 
