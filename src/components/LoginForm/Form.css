@@ -19,7 +19,7 @@ hr {
   visibility: visible;
   position: absolute;
   z-index: 1000;
-  top: 50%;
+  top: 300px;
   left: 50%;
   margin-top: -230px;
   margin-left: -210px;

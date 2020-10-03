@@ -17,9 +17,22 @@ body {
   color: #77b28c;
   text-decoration: none;
 }
-h1,h2,h3{
+h1{
+  color: whitesmoke;
+  text-decoration: none;
+  margin: 20px;
+}
+
+h2,h3{
   color: white;
   text-decoration: none;
+  margin: 20px;
+}
+
+p{
+  color: whitesmoke;
+  font-style: oblique;
+  margin: 20px;
 }
 
 .label {
@@ -67,6 +80,23 @@ h1,h2,h3{
       visibility .3s ease-in .3s;
   transform: scale(.9);
 }  
+
+.profile{
+  background-color: #499f68;
+  width: 40%;
+  margin: 30px;
+
+}
+
+#profile-head{
+  color: #157a6e;
+}
+
+#project-spread{
+  display: flex;
+  align-items: center; 
+  flex-direction: row;
+}
 
 #project-details{
   padding: 50px;

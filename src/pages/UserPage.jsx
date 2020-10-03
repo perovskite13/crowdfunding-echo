@@ -28,16 +28,20 @@ function UserPage(){
 
         
     return (
-        <div className="project">
+        <div id = "project-spread">
+            <div className="profile">
             <div id = "project-details">
-                <h1>Profile</h1>
+                <h1 id="profile-head">Profile</h1>
+                <h2>Citizen Scientist</h2>
                 <h3 >Username : {userData.username}</h3>
                 <h3 >Email : {userData.email}</h3>
                 <h3 >Bio : {userData.bio}</h3>
                 <h3 >Location : {userData.location}</h3>
                 {/* <h3 >Mentor : {userData.username}</h3> */}
             </div>  
+            </div>
         </div>
+        
     );
 }
 

@@ -40,7 +40,7 @@ function EditForm(props){
 
     const postData = async() => {
         const token = getStorage("token")
-        const response = await fetch(`${process.env.REACT_APP_API_URL}echo/${id}`,{
+        const response = await fetch(`${process.env.REACT_APP_API_URL}echo/`,{
             method: "put",
             headers: {
                 "Content-Type": "application/json",
@@ -76,6 +76,7 @@ function EditForm(props){
               id="title"
               placeholder="Project Title"
               onChange={handleChange}
+              value = {projectDetails.title}
               />
           </div>
           <div className = "field">
@@ -86,6 +87,7 @@ function EditForm(props){
               id="goal"
               placeholder="Fund Target"
               onChange={handleChange}
+              value = {projectDetails.goal}
             />
           </div>
           </div>
@@ -98,6 +100,7 @@ function EditForm(props){
               id="description"
               placeholder="Project Description"
               onChange={handleChange}
+              value = {projectDetails.description}
             />
           </div>
           
@@ -109,6 +112,7 @@ function EditForm(props){
               id="image"
               placeholder="Image URL"
               onChange={handleChange}
+              value = {projectDetails.image}
             />
           </div>
           </div>
@@ -118,8 +122,10 @@ function EditForm(props){
             <select 
             className = "input" 
             type="select" 
-            id="isOpen" 
-            onChange={handleChange}>
+            id="is_open" 
+            onChange={handleChange}
+            value = {projectDetails.is_open}
+            >
               <option value="true">Active</option>
               <option value="false">Inactive</option>
             </select>
@@ -131,6 +137,7 @@ function EditForm(props){
               type="select"
               id="category"
               onChange={handleChange}
+              value = {projectDetails.category}
             >
               <option value="Energy/Resources">Energy/Resources</option>
               <option value="Water Quality">Water Quality </option>
