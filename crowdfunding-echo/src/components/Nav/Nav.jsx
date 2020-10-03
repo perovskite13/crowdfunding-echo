@@ -23,7 +23,30 @@ function Nav(){
         clearStorage();
         history.push("/");
     }
-    console.log(loggedin);
+    
+    // const getData = async() => {
+    //     const token = getStorage("token")
+    //     const response = await fetch(`${process.env.REACT_APP_API_URL}users/`,{
+    //         method: "get",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             "Authorization": `Token ${token}`,
+    //         },
+    //         //body: JSON.stringify(userDetails),
+    //     });
+    //     return response.json();
+    // };
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     getData(isAuthenticated()).then(res => {
+    //     console.log(res)
+    //     history.push( `/users/${res.id}`)
+    //     });
+    //     }
+    // };
+
+    //console.log(loggedin);
     
     return (
         <nav id = "nav-container">
@@ -40,6 +63,16 @@ function Nav(){
         }
             <Link className = "nav-text" to="/users/">Sign Up</Link>
             <Link className = "nav-text" to="/echo/">Create</Link>
+            {!loggedin ?(
+                <>
+                </>
+            ):(
+                <>
+                <Link className = "nav-text" to="/users/" >{getStorage("user")}</Link>
+                </>
+            )
+        }
+                <hr/>
         </nav>
     );
 }

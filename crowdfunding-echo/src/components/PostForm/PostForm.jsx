@@ -1,20 +1,33 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {useHistory} from "react-router-dom";
-import {setStorage} from "../../helpers/localStorage";
+import {getStorage, isAuthenticated, setStorage} from "../../helpers/localStorage";
 
 
 function PostForm(){
     //variables
+    //const Today = React.createContext(CalendarDate.today());
+
     const[projectDetails,setProjectDetails] = useState({
         title : "",
         description : "Describe your project ideas",
         goal : 0,
         image : "",
-        isOpen : false,
+        is_open : true,
         category : "",
+        date_created: "2020-03-20T14:28:23.382748Z"
     });
 
     const history = useHistory();
+
+  //   useEffect(() =>
+  //   fetch(`${process.env.REACT_APP_API_URL}echo/:id`
+  //     .then(res => res.json())
+  //     .then(res => this.setProjectDetails({ title: res }))
+  //     .then(res => this.setProjectDetails({ description: res }))
+  //     .then(res => this.setProjectDetails({ goal: res }))
+  //     .then(res => this.setProjectDetails({ isOpen: res }))
+  //     .then(res => this.setProjectDetails({ category: res }))
+  // ));
 
     //methods
     //set state
@@ -28,10 +41,12 @@ function PostForm(){
 
 
     const postData = async() => {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}api-token-auth/`,{
+        const token = getStorage("token")
+        const response = await fetch(`${process.env.REACT_APP_API_URL}echo/`,{
             method: "post",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Token ${token}`,
             },
             body: JSON.stringify(projectDetails),
         });
@@ -41,27 +56,23 @@ function PostForm(){
     //get token
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submit pressed")
         if (
             projectDetails.title &&
             projectDetails.description &&
             projectDetails.goal &&
             projectDetails.image &&
-            projectDetails.isOpen &&
+            projectDetails.is_open &&
             projectDetails.category
         ) {
-          console.log("All data is there")
-          postData().then((response) => {
-            //console.log(response);
-            //window.localStorage.setItem("title", projectDetails.title);
+          postData(isAuthenticated()).then(res => {
             setStorage("title",projectDetails.title);
-            history.push("/echo");
+            console.log(res)
+            history.push( `/echo/${res.id}`)
           });
         }
     }
-    
-    
 
+    
     //template
     return (
       
@@ -131,7 +142,7 @@ function PostForm(){
             <select
             className = "input"
               type="select"
-              id="subareas"
+              id="category"
               onChange={handleChange}
             >
               <option value="Energy/Resources">Energy/Resources</option>
@@ -152,8 +163,6 @@ function PostForm(){
 
 
           </div>
-
-          
 
       );
     

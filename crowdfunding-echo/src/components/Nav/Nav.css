@@ -3,25 +3,36 @@
 
 /* Grow */
 /*NAV*/
-#nav-container{
+/* #nav-container{
     padding: 10px;
     color: #fff;
     text-align: center;
     border-radius: 5px;
     margin: 0px;
+} */
+
+#nav-container{
+    padding: 10px;
+    color: #fff;
+    text-align: left;
+    border-radius: 5px;
+    margin: 10px;
+    text-decoration: none;
+    /* background-color: #77b28c; */
 }
 
 .nav-text{
     display: inline-flex;
     flex-grow: 1;
     flex-direction: row;
-    padding: 20px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
     color: #FFF;
-    font-size: 1.2rem;
-    font-style: italic;
-    text-align: center;
+    font-size: 1.0rem;
+    text-align: left;
+    text-decoration: none;
+
 }
 
 .nav-text a:hover {

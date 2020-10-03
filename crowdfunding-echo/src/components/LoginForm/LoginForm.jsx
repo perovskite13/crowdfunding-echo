@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, useHistory} from "react-router-dom";
 import "./Form.css";
-import {setStorage} from "../../helpers/localStorage";
+import {getStorage, setStorage} from "../../helpers/localStorage";
 
 
 function LoginForm(){
@@ -40,8 +40,9 @@ function LoginForm(){
         e.preventDefault();
         if(credentials.username && credentials.password){
             postData().then((response)=> {
-                //window.localStorage.setItem("token", response.token);
                 setStorage("token", response.token);
+                //window.localStorage.setItem("user", credentials.username);
+                setStorage("user", credentials.username);
                 history.push("/");
             });
         }

@@ -29,6 +29,7 @@ function ProjectPage(){
     <div className= "project">
         <div id="project-details">
         <h1 id = "title">{projectData.title}</h1>
+        <hr/>
         <h3>Created at: {projectData.date_created}</h3>
         <h3>Goal: $ {projectData.goal}</h3>
         <h3>{`Active: ${projectData.is_open}`}</h3>
@@ -51,7 +52,7 @@ function ProjectPage(){
             ))}
         </div>
 
-        <div>
+        <div className = "img-container">
             <img src={projectData.image} alt=""/>
         </div>
 

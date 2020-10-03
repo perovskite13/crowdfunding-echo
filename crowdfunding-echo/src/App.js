@@ -7,15 +7,14 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ProjectPage from "./pages/ProjectPage";
 import CreatePage from "./pages/CreatePage";
+import UserPage from "./pages/UserPage";
 import SignUpPage from "./pages/SignUpPage";
 
 import "./App.css";
 
 function App(){
 
-
   return(
-    // <LoggedInContext.Provider value={{ loggedIn, setLoggedIn }}>
     <div className = "App">
       <div>
       
@@ -36,6 +35,10 @@ function App(){
             <LoginPage />
           </Route>
 
+          <Route path="/users/:id">
+            <UserPage />
+          </Route>
+
           <Route path="/users/">
             <SignUpPage />
           </Route>
@@ -48,12 +51,8 @@ function App(){
         </Switch>
         </div>
         </Router>
-
     </div>
-
     </div>
-    
-    // </LoggedInContext.Provider> 
   )
 }
 

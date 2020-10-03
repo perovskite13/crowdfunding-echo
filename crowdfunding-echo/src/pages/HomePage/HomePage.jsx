@@ -34,7 +34,9 @@ function HomePage(){
                 return <ProjectCard key={key} projectData={projectData} />;
             })}
             </div>
-            <footer> Copyright Echo 2020</footer>
+            <footer>
+                <hr/>
+                Copyright Echo 2020</footer>
 
         </div>
 
