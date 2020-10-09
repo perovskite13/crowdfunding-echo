@@ -35,6 +35,15 @@ p{
   margin: 20px;
 }
 
+b{
+  color : #c2c5bb;
+}
+
+.button-inline{
+  display: flex;
+  justify-content: space-around;
+}
+
 .label {
   font-weight: lighter;
   margin-left: -5px;
@@ -49,7 +58,15 @@ p{
   row-gap: 10px;
 }
 
+.homepic-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 #home-pic{
+  align-items: center;
   width: 20%;
   height:20%;
   padding: 0px;
@@ -80,6 +97,10 @@ p{
       visibility .3s ease-in .3s;
   transform: scale(.9);
 }  
+
+ul{height:200px; width:18%;}
+ul{overflow:hidden; overflow-y:scroll;}
+li{color: #c2c5bb; font-size: 30px;}
 
 .profile{
   background-color: #499f68;

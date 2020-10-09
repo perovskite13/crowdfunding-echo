@@ -18,3 +18,8 @@ export function isAuthenticated() {
         return false;
     }
 };
+
+export function isOwner(owner){
+    return(owner === window.localStorage.getItem("user"))
+}
+

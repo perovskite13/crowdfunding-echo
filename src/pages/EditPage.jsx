@@ -6,7 +6,7 @@ import {isAuthenticated} from "../helpers/localStorage";
 
 
 function EditPage(){
-    const [projectDetails, setProjectDetails] = useState({ 
+    const [projectData, setProjectData] = useState({ 
         pledges: [] 
     });
     const {id} = useParams();
@@ -18,12 +18,12 @@ function EditPage(){
             return results.json();
         })
         .then((data) => {
-            setProjectDetails(data);
+            setProjectData(data);
         });
     },[id])
 
     if(isAuthenticated()){
-        return <EditForm projectDetails = {projectDetails}/>;
+        return <EditForm projectData = {projectData}/>;
     }
     return (
     <div className = "notAllowed">

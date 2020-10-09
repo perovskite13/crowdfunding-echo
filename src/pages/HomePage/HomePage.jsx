@@ -26,8 +26,10 @@ function HomePage(){
     return (
         <div>
             <div className = "App-header">
+                <div className = "homepic-container">
                 <img id="home-pic" src={logo} className="App-logo" alt="logo" />
                 <h2>Crowdfunding Platform On Environmental Sustainability </h2>
+                </div>
                 <hr />
                 <h1>Purpose</h1>
                 <h3>To allow Citizen Scientists to collaborate on science-informed projects relevant to environmental sustainability.</h3>

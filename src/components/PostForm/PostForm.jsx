@@ -16,10 +16,10 @@ function PostForm(){
         goal : 0,
         image : "",
         is_open : true,
-        category : "",
+        category : "Energy/Resources",
         date_created: "2020-03-20T14:28:23.382748Z"
     });
-
+// console.log(projectDetails)
     const history = useHistory();
 
     //methods
@@ -51,17 +51,15 @@ function PostForm(){
         e.preventDefault();
         if (
             projectDetails.title &&
-            projectDetails.description &&
             projectDetails.goal &&
-            projectDetails.image &&
-            projectDetails.is_open &&
             projectDetails.category
         ) {
           postData(isAuthenticated()).then(res => {
             setStorage("title",projectDetails.title);
             console.log(res)
             history.push( `/echo/${res.id}`)
-          });
+          }
+          );
         }
     }
 

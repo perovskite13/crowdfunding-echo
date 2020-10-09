@@ -28,12 +28,12 @@ function App(){
             <ProjectPage />
           </Route>
 
-          <Route path="/createProject/">
-            <CreatePage />
+          <Route path="/editProject/:id/">
+            <EditPage />
           </Route>
 
-          <Route path="/editProject/">
-            <EditPage />
+          <Route path="/createProject/">
+            <CreatePage />
           </Route>
 
           <Route path="/login/">

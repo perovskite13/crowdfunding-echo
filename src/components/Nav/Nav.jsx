@@ -42,7 +42,7 @@ function Nav(){
                 </>
             ):(
                 <>
-                <Link className = "nav-text" to="/users/9/" >{getStorage("user")}</Link> 
+                <Link className = "nav-text" to="/users/me/" >{getStorage("user")}</Link> 
                 </>
             )
         }

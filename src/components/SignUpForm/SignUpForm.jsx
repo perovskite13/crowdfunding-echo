@@ -9,6 +9,9 @@ function SignUpForm(props){
         username: "",
         email: "",
         password: "",
+        bio: "",
+        location: "",
+        is_mentor: false
     });
 
     const history = useHistory();
@@ -22,27 +25,30 @@ function SignUpForm(props){
             [id]: value,
         }));
     };
+    // console.log(credentials);
 
-
-    // useEffect(() => {
-    //     fetch(`${process.env.REACT_APP_API_URL}users/`)
-    //         .then((response) => response.json())
-    //         .then((data) => console.log(data))
-    //     },[])
-    //     return response.json();
-    // };
+    const postData = async() => {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}users/`,{
+            method: "post",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+        });
+        return response.json();
+    };
 
     //get token
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(credentials.password == credentials.confirmPassword){
-            handleChange().then((response)=> {
+        if(credentials.username && credentials.email && credentials.password  ){
+            postData().then((response)=> {
                 //window.localStorage.setItem("signup", response.username);
                 setStorage("signup",response.username);
-                history.push("/");
+                history.push("/login");
             });
         }else{
-            props.showError('Passwords do not match');
+            props.showError('Fill in all details');
         }
     };
 
@@ -72,6 +78,31 @@ function SignUpForm(props){
                 placeholder="Enter password" 
                 onChange = {handleChange}/>
             </div>
+            <div className = "field">
+            <label htmlFor="bio">Bio: </label>
+                <input className = "input" type="bio" 
+                id="bio" 
+                placeholder="Enter bio" 
+                onChange = {handleChange}/>
+            </div>
+            <div className = "field">
+            <label htmlFor="location">Location: </label>
+                <input className = "input" type="location" 
+                id="location" 
+                placeholder="Enter location" 
+                onChange = {handleChange}/>
+            </div>
+            <div className = "field">
+            <label htmlFor="is_mentor">Want to be a Mentor?:    </label>
+            <select 
+            className = "input" 
+            type="select" 
+            id="is_mentor" 
+            onChange={handleChange}>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
             <div  className="in-out">
                 <label > Already have an account? </label>
                 <Link  to="/login/">  Login </Link>

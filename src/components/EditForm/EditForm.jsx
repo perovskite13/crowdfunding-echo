@@ -4,17 +4,11 @@ import {getStorage, isAuthenticated, setStorage} from "../../helpers/localStorag
 
 function EditForm(props){
     const {projectData} = props;
-    console.log(projectData)
-    const [projectDetails,setProjectDetails] = useState({
-        title: "",
-        description: "",
-        goal: "",
-        image: "",
-        is_open: "",
-        owner: "",
-    });
+    // console.log(projectData);
+    const [projectDetails,setProjectDetails] = useState([]);
     const history = useHistory();
-    const { id } = useParams();
+    const {id} = useParams();
+
 
     useEffect(() =>{
         setProjectDetails({
@@ -24,9 +18,11 @@ function EditForm(props){
             image: projectData.image,
             is_open: projectData.is_open,
             owner: projectData.owner,
-        })
+        });
     }
     ,[projectData]);
+
+    //console.log(projectDetails);
 
     //methods
     //set state
@@ -40,11 +36,11 @@ function EditForm(props){
 
     const postData = async() => {
         const token = getStorage("token")
-        const response = await fetch(`${process.env.REACT_APP_API_URL}echo/`,{
+        const response = await fetch(`${process.env.REACT_APP_API_URL}echo/${id}/`,{
             method: "put",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Token ${token}`,
+                "Authorization": `token ${token}`,
             },
             body: JSON.stringify(projectDetails),
         });
@@ -54,11 +50,14 @@ function EditForm(props){
     //get token
     const handleSubmit = (e) => {
         e.preventDefault();
-          postData(isAuthenticated()).then(res => {
-            setStorage("title",projectDetails.title);
-            console.log(res)
-            history.push( `/echo/${res.id}`)
-        });
+
+        postData(isAuthenticated()).then(res => {
+          setStorage("title",projectDetails.title);
+          console.log(res)
+          history.push( `/echo/${res.id}`)
+        }
+        );
+      
     }
 
     //template
