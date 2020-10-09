@@ -81,7 +81,7 @@ function LoginForm(){
             </div>
             <div  className="in-out">
                 <label  >Don't have an account? </label>
-                <Link  to="/users/">  Sign Up </Link>
+                <Link  to="/signup/">  Sign Up </Link>
             </div>
             <hr />
             <button className="submit-button" type="submit" 
