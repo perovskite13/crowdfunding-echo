@@ -39,23 +39,31 @@ function ProjectPage(){
         setProjectData(data)
         }
         );
-        }, []);
+        }, [projectData]);
 
+    function isClosed(){
+        if(sum>projectData.goal){
+            return true
+        }else{
+            return false
+        }
+    }
+        
     return (
     <div>
     <div className= "project">
         <div id="project-details">
-        <h1 id = "title">{projectData.title}</h1>
-        <hr/>
-    <h3><b>Created at:</b> {projectData.date_created}</h3> 
-    <h3><b>Initiated by: </b>{projectData.owner}</h3>
-    {/* <h3><b>Category: </b>{projectData.category}</h3> */}
+            <h1 id = "title">{projectData.title}</h1>
+            <hr/>
+            <h3><b>Created at:</b> {projectData.date_created}</h3> 
+            <h3><b>Initiated by: </b>{projectData.owner}</h3>
+        {/* <h3><b>Category: </b>{projectData.category}</h3> */}
 
-    <h3><b>Description:</b> {projectData.description}</h3>
+            <h3><b>Description:</b> {projectData.description}</h3>
 
-        <h3><b>Goal: </b> $ {projectData.goal}</h3>
-        <h3><b>Active:</b> {`${projectData.is_open}`}</h3>
-        <h3><b>Pledges: </b>Total - $ {sum}</h3>
+            <h3><b>Goal: </b> $ {projectData.goal}</h3>
+            <h3><b>Active:</b> {`${projectData.is_open}`}</h3>
+            <h3><b>Pledges: </b>Total - $ {sum}</h3>
         
         <div className="App">
             
@@ -69,28 +77,60 @@ function ProjectPage(){
         </div>
 
         <hr/>
-        {loggedin  ?(
+        {isClosed() ?(
             <>
-            {isOwner(projectData.owner)?(
-                <div className = "button-inline">
-                <Link to={`/editProject/${id}`}>
-                    <button className="submit-button" >
-                        Edit 
-                    </button>
-                </Link>
-                <DeleteForm />
-                </div>
+            {loggedin  ?(
+                        <>
+                        <h4 >Hooray! This project is closed. </h4>
+                        {isOwner(projectData.owner)?(
+                            <div className = "button-inline">
+                            <Link to={`/editProject/${id}`}>
+                                <button className="submit-button" >
+                                    Edit 
+                                </button>
+                            </Link>
+                            <DeleteForm />
+                            </div>
+                        ):(
+                            <>
+                            <h4 >Project is fully funded! </h4>
+                            </>
+                        )}
+                        </>
             ):(
                 <>
                 </>
-            )}
-            <PledgeForm projectData={projectData} />
+            )
+            }
             </>
         ):(
             <>
+            {loggedin  ?(
+                        <>
+                        {isOwner(projectData.owner)?(
+                            <div className = "button-inline">
+                            <Link to={`/editProject/${id}`}>
+                                <button className="submit-button" >
+                                    Edit 
+                                </button>
+                            </Link>
+                            <DeleteForm />
+                            </div>
+                        ):(
+                            <>
+                            </>
+                        )}
+                        <PledgeForm projectData={projectData} />
+                        </>
+                    ):(
+                        <>
+                        </>
+                    )
+            }
             </>
         )
         }
+
         <h1>Our Loyal Supporters</h1>
         <ul>
             {projectData.pledges.map((pledgeData, key) => 

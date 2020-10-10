@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import {Link, useParams, useHistory} from "react-router-dom";
-import {getStorage, isAuthenticated, setStorage} from "../../helpers/localStorage";
+import {getStorage, isAuthenticated, isOwner, setStorage} from "../../helpers/localStorage";
 
 
 function EditForm(props){
@@ -37,7 +37,7 @@ function EditForm(props){
 
     const postData = async() => {
       const token = getStorage("token")
-      // try{
+      try{
         const response = await fetch(`${process.env.REACT_APP_API_URL}echo/${id}/`,{
             method: "put",
             headers: {
@@ -47,20 +47,23 @@ function EditForm(props){
             body: JSON.stringify(projectDetails),
         });
         return response.json();
-      // } catch(e) {
-      //   // console.log(e);
-      //   <Link to={`/error/`}></Link>
-      // }
+      } catch(e) {
+        // console.log(e);
+        history.push(`/error/`);
+      }
     };
 
     //get token
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        postData(isAuthenticated()).then(res => {
-          setStorage("title",projectDetails.title);
-          console.log(res)
-          history.push( `/echo/${res.id}`)
+          postData(isOwner()).then(res => {
+            setStorage("title",projectDetails.title);
+            console.log(res.id)
+            if(res.id === undefined){
+              history.push(`/error/`);
+            }else{
+              history.push( `/echo/${res.id}`);
+            }
         }
         );
       

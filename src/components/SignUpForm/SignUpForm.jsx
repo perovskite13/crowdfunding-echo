@@ -75,7 +75,7 @@ function SignUpForm(props){
             <label htmlFor="password">Password: </label>
                 <input className = "input" type="password" 
                 id="password" 
-                placeholder="Enter password" 
+                placeholder="an Uppercase, number and special char" 
                 onChange = {handleChange}/>
             </div>
             <div className = "field">

@@ -29,6 +29,14 @@ h2,h3{
   margin: 20px;
 }
 
+h4{
+  color: #c2c5bb;
+  padding: 0px;
+  justify-content: center;
+  text-align: center;
+  font-size: 30px;
+}
+
 p{
   color: whitesmoke;
   font-style: oblique;
@@ -112,11 +120,13 @@ ul{overflow:hidden; overflow-y:scroll;}
 li{color: #c2c5bb; font-size: 30px;}
 
 .profile{
+  display: flex;
   background-color: #499f68;
-  width: 40%;
+  width: 60%;
   margin: 30px;
 
 }
+
 
 .supportlogo{
   width: 30%;

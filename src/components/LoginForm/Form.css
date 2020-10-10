@@ -96,7 +96,8 @@ hr {
 }
 
 .field {
-    
+  /* display: flex;   */
+  flex-grow: 1;
   margin: 20px;
   margin-left: 50px;
   text-align: left;
@@ -120,14 +121,14 @@ hr {
     align-items: center;
     flex-grow: 1;
 
-    margin: 5px;
+    /* margin: 5px; */
     width: 100%;
     margin-left: -5px;
     height: 40px;
     border-radius: 2px;
     border: none;
     font-size: 18px;
-    padding: 5px;
+    /* padding: 5px; */
     color: #25291b;
     background-color: rgba(255,255,255, .5);
     /* -webkit-box-shadow: 10px 10px 10px -10px rgba(0,0,0,0.3); */
@@ -135,8 +136,9 @@ hr {
 }
 
 .input {
+  display: flex;
   margin: 5px;
-  width: 300px;
+  width: 100%;
   margin-left: -5px;
   height: 40px;
   border-radius: 2px;
