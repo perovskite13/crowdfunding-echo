@@ -20,6 +20,7 @@ function ProjectPage(){
     const [projectData, setProjectData] = useState({ 
         pledges: [] 
     });
+    //console.log(projectData);
     const { id } = useParams();
     
     const sum = projectData.pledges.reduce(((result,pledge)=> result+pledge.amount),0); 
@@ -48,6 +49,8 @@ function ProjectPage(){
         <hr/>
     <h3><b>Created at:</b> {projectData.date_created}</h3> 
     <h3><b>Initiated by: </b>{projectData.owner}</h3>
+    {/* <h3><b>Category: </b>{projectData.category}</h3> */}
+
     <h3><b>Description:</b> {projectData.description}</h3>
 
         <h3><b>Goal: </b> $ {projectData.goal}</h3>
@@ -94,7 +97,7 @@ function ProjectPage(){
             {
                 return (
                         <li>
-                        $ {pledgeData.amount} from {pledgeData.supporter}
+                        $ {pledgeData.amount} from {pledgeData.supporter}, who shouts "{pledgeData.comment}"
                         </li>
                 );             
             })

@@ -10,6 +10,8 @@ import CreatePage from "./pages/CreatePage";
 import EditPage from "./pages/EditPage";
 import UserPage from "./pages/UserPage";
 import SignUpPage from "./pages/SignUpPage";
+import ErrorPage from "./pages/ErrorPage";
+
 
 import "./App.css";
 
@@ -46,6 +48,10 @@ function App(){
 
           <Route path="/signup/">
             <SignUpPage />
+          </Route>
+
+          <Route path="/error/">
+            <ErrorPage />
           </Route>
 
           <Route path="/">

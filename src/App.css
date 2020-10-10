@@ -98,7 +98,16 @@ b{
   transform: scale(.9);
 }  
 
-ul{height:200px; width:18%;}
+ul{
+  height:200px; width:80%;
+  border: none;
+  background-color: rgba(142, 247, 186, 0.13);
+  border-radius: 2px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 3px;
+  transition: background-color .4s ease-out;
+}
 ul{overflow:hidden; overflow-y:scroll;}
 li{color: #c2c5bb; font-size: 30px;}
 
@@ -107,6 +116,12 @@ li{color: #c2c5bb; font-size: 30px;}
   width: 40%;
   margin: 30px;
 
+}
+
+.supportlogo{
+  width: 30%;
+  height: 30%;
+  padding: 20px;
 }
 
 #profile-head{
